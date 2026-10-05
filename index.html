@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduLearn - Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="dashboard-page">
+  <aside class="sidebar">
+    <div class="brand small-brand"><span class="brand-mark">◆</span> EduLearn</div>
+    <nav class="side-nav">
+      <a class="active" href="index.html">▦ <span>Dashboard</span></a>
+      <a href="#">▣ <span>Kursus Saya</span></a>
+      <a href="#">□ <span>Jadwal</span></a>
+      <a href="#">✓ <span>Tugas</span></a>
+      <a href="#">☆ <span>Nilai</span></a>
+      <a href="#">⚙ <span>Pengaturan</span></a>
+    </nav>
+    <a class="logout" href="login.html">⇥ &nbsp;Keluar</a>
+  </aside>
+
+  <main class="dashboard-main">
+    <header class="topbar">
+      <div class="search">⌕ <span>Cari materi, tugas, atau dosen...</span></div>
+      <div class="top-user"><span class="bell">♧</span><span class="avatar">DP</span><span>Dery<br><small>2318021</small></span></div>
+    </header>
+
+    <section class="welcome-card">
+      <div>
+        <span class="eyebrow">◉ Tahun Akademik Aktif</span>
+        <h1>Selamat datang kembali, Dery! 👋</h1>
+        <p>Semester Genap 2024/2025 • Teknik Informatika • Universitas Global Mandiri</p>
+      </div>
+      <div class="achievement"><small>INDEKS PRESTASI</small><strong>3.88</strong><span>/ 4.00</span></div>
+    </section>
+
+    <section class="stats-grid">
+      <div class="stat-card"><div><small>Total Kursus Aktif</small><strong>12</strong><span>kursus</span></div><i>▣</i></div>
+      <div class="stat-card"><div><small>Tugas Selesai</small><strong>8</strong><span>tugas</span></div><i>✓</i></div>
+      <div class="stat-card"><div><small>Progres Belajar Keseluruhan</small><strong>75%</strong><div class="progress"><span style="width:75%"></span></div><em>+5% dibanding minggu lalu</em></div><i>⌁</i></div>
+    </section>
+
+    <section class="courses-section">
+      <div class="section-title"><div><h2>Kursus Saya</h2><p>Lanjutkan sesi pembelajaran terakhir Anda</p></div><button>Semua (12)</button><button class="ghost">Sedang Berjalan (6)</button><button class="ghost">Selesai (6)</button></div>
+      <div class="course-grid">
+        <article class="course-card"><div class="course-cover blue"><span>Informatika • 3 SKS</span><b>▣</b><h3>FRONTEND &amp; BACKEND</h3></div><div class="course-body"><h3>Pemrograman Web Modern</h3><p>Dr. Budi Santoso, M.Kom</p><div class="mini-progress"><span>16 dari 20 Modul Selesai</span><b>80%</b></div><div class="line"><i style="width:80%"></i></div><a href="#">Lanjutkan Belajar</a></div></article>
+        <article class="course-card"><div class="course-cover navy"><span>Informatika • 3 SKS</span><b>▣</b><h3>CLOUD INFRASTRUCTURE</h3></div><div class="course-body"><h3>Sistem Basis Data...</h3><p>Ir. Siti Rahma, M.T.</p><div class="mini-progress"><span>13 dari 20 Modul Selesai</span><b>65%</b></div><div class="line"><i style="width:65%"></i></div><a href="#">Lanjutkan Belajar</a></div></article>
+        <article class="course-card"><div class="course-cover cyan"><span>Desain • 3 SKS</span><b>▣</b><h3>USER EXPERIENCE</h3></div><div class="course-body"><h3>UI/UX Design System &amp;...</h3><p>H. Hendro Wijaya, S.Ds., M.Sn.</p><div class="mini-progress"><span>18 dari 20 Modul Selesai</span><b>90%</b></div><div class="line"><i style="width:90%"></i></div><a href="#">Lanjutkan Belajar</a></div></article>
+      </div>
+    </section>
+
+    <section class="tasks"><div class="section-title"><div><h2>Tugas Mendatang <span>3 Terbatas</span></h2></div><a href="#">Lihat Semua Tugas →</a></div>
+      <div class="task-list">
+        <div class="task red"><b>▣</b><div><strong>Tugas Praktikum 4: REST API Authentication</strong><p><span>Praktikum Web • Kamis, 23 Mei</span> • Backend JWT Implementation &amp; Middleware</p></div><small>Belum Dikumpulkan</small><button>Kirim Tugas</button></div>
+        <div class="task" id="task1">
+  <b>!</b><div><strong>Tugas 1</strong><p>...</p></div>
+  <button onclick="document.getElementById('task1').remove()">Hapus</button>
+</div>
+        <div class="task orange"><b>▧</b><div><strong>Laporan Analisis Sharding &amp; Replikasi Database</strong><p><span>Batas Waktu 2 Hari Lagi (14 Mei)</span> • Sistem Basis Data Terdistribusi</p></div><small>Draft Tersimpan</small><button>Lanjutkan Draft</button></div>
+        <div class="task" id="task1">
+  <b>!</b><div><strong>Tugas 1</strong><p>...</p></div>
+  <button onclick="document.getElementById('task1').remove()">Hapus</button>
+</div>
+        <div class="task blue-task"><b>?</b><div><strong>Figma High-Fidelity Prototype E-Commerce</strong><p><span>UX Design • Hari Selasa 14 Mei</span> • Aksesibilitas &amp; Usability Audit</p></div><small>Belum Dikerjakan</small><button>Mulai Kerjakan</button></div>
+        <div class="task" id="task1">
+  <b>!</b><div><strong>Tugas 1</strong><p>...</p></div>
+  <button onclick="document.getElementById('task1').remove()">Hapus</button>
+</div>
+      </div>
+      <div class="section-title">
+  <div><h2>Kursus Saya</h2><p>Daftar kursus yang sedang kamu ikuti</p></div>
+  <button onclick="addCourse()">+ Tambah Kursus</button>
+</div>
+      
+    </section>
+  </main>
+</body>
+</html>
