@@ -1,0 +1,106 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Inter, sans-serif;
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  background: #f1f5f9;
+}
+
+.sidebar {
+  width: 240px;
+  background: #0f172a;
+  color: #fff;
+  padding: 20px;
+}
+
+.logo {
+  font-weight: 800;
+  font-size: 20px;
+  margin-bottom: 30px;
+  font-style: italic;
+}
+
+.menu a {
+  display: block;
+  padding: 10px 12px;
+  border-radius: 8px;
+  color: #94a3b8;
+  text-decoration: none;
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+
+.menu a.active,
+.menu a:hover {
+  background: #1e293b;
+  color: #fff;
+}
+
+.main {
+  flex: 1;
+  padding: 24px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.card {
+  background: #fff;
+  padding: 18px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+}
+
+.card p {
+  font-size: 22px;
+  font-weight: 700;
+  margin-top: 6px;
+}
+
+.table-wrap {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  padding: 18px;
+  overflow: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+th {
+  text-align: left;
+  color: #64748b;
+  font-size: 11px;
+  padding: 10px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+td {
+  padding: 10px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+@media (max-width: 768px) {
+  body {
+    flex-direction: column;
+  }
+  .sidebar {
+    width: 100%;
+  }
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}

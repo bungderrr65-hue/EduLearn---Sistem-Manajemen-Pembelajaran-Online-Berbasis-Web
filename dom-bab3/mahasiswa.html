@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EduLearn - Login</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="top-bar" id="topBar">Login</div>
+<div class="main">
+<div class="left">
+<div class="left-header"><div class="logo" id="logoHover"><div class="logo-icon">🎓</div>EduLearn</div><div class="portal">● Portal Mahasiswa 2025</div></div>
+<img class="left-img" src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=800&q=80" alt="kelas">
+<div class="left-content"><h2 id="welcomeText">Selamat Datang di EduLearn</h2><p>Masuk ke portal akademik untuk melanjutkan proses belajar, melihat progres kursus, dan mengumpulkan tugas harianmu.</p><div id="quoteAPI" style="margin-top:15px; font-size:13px; background:#f0fdf4; padding:8px; border-radius:8px;"></div></div>
+</div>
+<div class="right">
+<div class="card">
+<div class="card-icon">🔒</div>
+<h3>Masuk ke Akun</h3>
+<p class="card-sub">Gunakan email universitas untuk melanjutkan</p>
+<div class="form-group"><div class="label"><span>Email Mahasiswa</span><span class="hint">NIM / SSO</span></div><input class="input" id="email" type="text" placeholder="nama@mahasiswa.ac.id"></div>
+<div class="form-group"><div class="label"><span>Kata Sandi</span><span id="togglePass" class="toggle-pass" style="cursor:pointer; color:#2563eb; font-weight:600;">Lihat</span></div><input class="input" id="password" type="password" placeholder="********"></div>
+<div class="row"><label class="remember"><input type="checkbox" id="remember"> Ingat Saya</label><a class="forgot" id="forgotLink" style="cursor:pointer;">Lupa Password?</a></div>
+<button class="btn" id="btnMasuk" type="button">Masuk →</button>
+<div style="margin-top:10px; text-align:center;"><button id="btnTema" type="button" style="background:transparent; border:1px solid #ddd; padding:6px 12px; border-radius:6px; cursor:pointer; font-size:12px;">🌙 Ganti Tema</button></div>
+<div class="bottom">Belum punya akun? <a id="daftarLink" style="cursor:pointer; color:#2563eb;">Daftar di sini</a></div>
+</div>
+</div>
+</div>
+
+<div id="modalDaftar" class="modal">
+  <div class="modal-content">
+    <span id="closeModal" class="close">&times;</span>
+    <h3>📝 Daftar Akun</h3>
+    <p>Buat akun baru untuk akses portal</p>
+    <div class="form-group"><div class="label">Nama Lengkap</div><input class="input" id="regNama" type="text" placeholder="Budi Santoso"></div>
+    <div class="form-group"><div class="label">Email Kampus</div><input class="input" id="regEmail" type="text" placeholder="budi@mahasiswa.ac.id"></div>
+    <div class="form-group"><div class="label">Password Baru</div><input class="input" id="regPass" type="password" placeholder="Minimal 6 karakter"></div>
+    <button class="btn" id="btnDaftar">Daftar Sekarang</button>
+  </div>
+</div>
+
+<div id="modalLupa" class="modal">
+  <div class="modal-content">
+    <span id="closeLupa" class="close">&times;</span>
+    <h3>🔑 Lupa Password</h3>
+    <p>Masukkan email kampus, kami kirim link reset</p>
+    <div class="form-group"><div class="label">Email Kampus</div><input class="input" id="resetEmail" type="text" placeholder="nama@mahasiswa.ac.id"></div>
+    <button class="btn" id="btnReset">Kirim Link Reset</button>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script src="js/popup.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/api.js"></script>
+<script src="js/events.js"></script>
+
+<script>
+  const btnMasuk = document.getElementById('btnMasuk');
+  if(btnMasuk){
+    btnMasuk.addEventListener('click', function(){
+      const email = document.getElementById('email').value.trim();
+      const pass = document.getElementById('password').value.trim();
+      if(email===''||pass===''){ alert('Email & Password tidak boleh kosong!'); return; }
+      simpanStorage(email);
+      popupLoginSukses(email);
+    });
+  }
+
+  // FIX LIHAT PASSWORD - ID nya togglePass
+  const togglePass = document.getElementById('togglePass');
+  const passInput = document.getElementById('password');
+  if(togglePass && passInput){
+    togglePass.addEventListener('click', function(){
+      if(passInput.type === 'password'){
+        passInput.type = 'text';
+        this.textContent = 'Sembunyikan';
+      } else {
+        passInput.type = 'password';
+        this.textContent = 'Lihat';
+      }
+    });
+  }
+
+  // Modal Daftar & Lupa
+  document.getElementById('daftarLink')?.addEventListener('click', ()=>{ document.getElementById('modalDaftar').style.display='flex'; });
+  document.getElementById('closeModal')?.addEventListener('click', ()=>{ document.getElementById('modalDaftar').style.display='none'; });
+  document.getElementById('forgotLink')?.addEventListener('click', (e)=>{ e.preventDefault(); popupLupaPassword(); });
+  document.getElementById('closeLupa')?.addEventListener('click', ()=>{ document.getElementById('modalLupa').style.display='none'; });
+  document.getElementById('btnDaftar')?.addEventListener('click', ()=>{ alert('Akun berhasil didaftar: '+document.getElementById('regEmail').value); document.getElementById('modalDaftar').style.display='none'; });
+  document.getElementById('btnReset')?.addEventListener('click', ()=>{ alert('Link reset dikirim ke: '+document.getElementById('resetEmail').value); document.getElementById('modalLupa').style.display='none'; });
+</script>
+</body>
+</html>

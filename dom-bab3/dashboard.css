@@ -1,0 +1,23 @@
+*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,sans-serif;}
+body{display:flex;min-height:100vh;background:#f8fafc;}
+.sidebar{width:220px;background:#2563eb;color:white;padding:20px;position:fixed;height:100vh;}
+.logo{font-weight:700;margin-bottom:20px;font-size:20px;}
+.menu{display:flex;flex-direction:column;gap:8px;}
+.menu a{padding:10px;border-radius:10px;cursor:pointer;font-size:14px;}
+.menu a.active,.menu a:hover{background:white;color:#2563eb;}
+.main{margin-left:220px;flex:1;padding:25px;}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.card{background:white;padding:15px;border-radius:12px;border:1px solid #e2e8f0;}
+.progress{background:#e2e8f0;height:6px;border-radius:10px;margin-top:8px;overflow:hidden;}
+.progress div{height:100%;background:#2563eb;width:0;transition:1s;}
+
+.mobile-nav{display:none;position:fixed;bottom:0;left:0;right:0;background:white;border-top:1px solid #e2e8f0;padding:8px 0;justify-content:space-around;z-index:999;}
+.mobile-nav a{text-align:center;font-size:11px;color:#64748b;text-decoration:none;cursor:pointer;}
+.mobile-nav a.active{color:#2563eb;font-weight:700;}
+
+@media(max-width:768px){
+  .sidebar{display:none;}
+  .main{margin-left:0;padding:15px;padding-bottom:80px;}
+  .cards{grid-template-columns:1fr;}
+  .mobile-nav{display:flex;}
+}

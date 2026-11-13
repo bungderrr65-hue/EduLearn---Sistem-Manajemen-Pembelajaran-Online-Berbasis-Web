@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Mahasiswa</title>
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+  <div class="sidebar">
+    <div class="logo">🎓 EduLearn</div>
+    <div class="menu">
+      <a class="active" id="menuBeranda">🏠 Beranda</a>
+      <a id="menuKursus">📚 Kursus Saya</a>
+      <a id="menuTugas">📝 Tugas</a>
+      <a id="menuProfil">👤 Profil</a>
+      <a id="btnLogout">🚪 Logout</a>
+    </div>
+  </div>
+
+  <div class="main">
+    <div id="viewBeranda">
+      <h3 id="judulWelcome">Selamat Datang! 👋</h3>
+      <p id="emailWelcome" style="font-size:13px;color:#64748b;margin:5px 0 20px;"></p>
+      <div class="cards">
+        <div class="card"><h4>Kursus Diikuti</h4><p>5 Kursus</p><div class="progress"><div style="width:80%"></div></div></div>
+        <div class="card"><h4>Tugas Selesai</h4><p>12 / 15</p><div class="progress"><div style="width:75%"></div></div></div>
+        <div class="card"><h4>IPK</h4><p>3.85</p><div class="progress"><div style="width:88%"></div></div></div>
+      </div>
+      <div class="card" style="margin-top:15px"><h4>📚 Kursus Aktif</h4><p style="font-size:12px;margin-top:8px;">Pemrograman Web - Pertemuan 7: DOM & Events</p></div>
+    </div>
+
+    <div id="viewKursus" style="display:none;"><h3>📚 Kursus Saya</h3><div class="card" style="margin-top:15px">Pemrograman Web<br>Basis Data<br>UI/UX Design</div></div>
+    <div id="viewTugas" style="display:none;"><h3>📝 Tugas</h3><div class="card" style="margin-top:15px">Tugas DOM - Hari ini (Urgent)<br>Kuis Basis Data - Besok</div></div>
+    <div id="viewProfil" style="display:none;"><h3>👤 Profil</h3><div class="card" style="margin-top:15px"><p id="profilEmail"></p><p>NIM: 202507001 - Teknik Informatika</p></div></div>
+  </div>
+
+  <!-- MENU BAWAH KHUSUS HP -->
+  <div class="mobile-nav">
+    <a class="active" id="mBeranda">🏠<br>Beranda</a>
+    <a id="mKursus">📚<br>Kursus</a>
+    <a id="mTugas">📝<br>Tugas</a>
+    <a id="mProfil">👤<br>Saya</a>
+  </div>
+
+<script>
+  let email = localStorage.getItem('emailMahasiswa') || 'mahasiswa@ac.id';
+  if(!localStorage.getItem('emailMahasiswa')) location.href='mahasiswa.html';
+  document.getElementById('judulWelcome').textContent = 'Halo, ' + email.split('@')[0] + '! 👋';
+  document.getElementById('emailWelcome').textContent = email;
+  document.getElementById('profilEmail').textContent = email;
+
+  function showView(v){
+    document.getElementById('viewBeranda').style.display='none';
+    document.getElementById('viewKursus').style.display='none';
+    document.getElementById('viewTugas').style.display='none';
+    document.getElementById('viewProfil').style.display='none';
+    document.getElementById(v).style.display='block';
+  }
+  menuBeranda.onclick=()=>{showView('viewBeranda'); setActive(0);};
+  menuKursus.onclick=()=>{showView('viewKursus'); setActive(1);};
+  menuTugas.onclick=()=>{showView('viewTugas'); setActive(2);};
+  menuProfil.onclick=()=>{showView('viewProfil'); setActive(3);};
+  mBeranda.onclick=()=>menuBeranda.onclick();
+  mKursus.onclick=()=>menuKursus.onclick();
+  mTugas.onclick=()=>menuTugas.onclick();
+  mProfil.onclick=()=>menuProfil.onclick();
+
+  function setActive(i){
+    document.querySelectorAll('.sidebar .menu a, .mobile-nav a').forEach(a=>a.classList.remove('active'));
+    document.querySelectorAll('.sidebar .menu a')[i].classList.add('active');
+    document.querySelectorAll('.mobile-nav a')[i].classList.add('active');
+  }
+  btnLogout.onclick=()=>{localStorage.clear(); location.href='mahasiswa.html';};
+</script>
+</body>
+</html>
