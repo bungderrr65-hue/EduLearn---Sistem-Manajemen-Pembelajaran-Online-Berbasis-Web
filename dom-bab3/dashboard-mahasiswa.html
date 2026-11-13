@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard - EduLearn</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+<div class="sidebar">
+<div>
+<div class="logo">🎓 EduLearn</div>
+<div class="menu">
+<a class="active" href="#">📊 Dashboard</a>
+<a href="#">📚 Mata Kuliah</a>
+<a href="#">📝 Tugas</a>
+<a href="#">📅 Jadwal</a>
+<a href="#">💬 Forum</a>
+<a href="#">⚙️ Pengaturan</a>
+</div>
+</div>
+<a href="#" onclick="logout()" style="color:#ef4444;text-decoration:none;font-size:14px;padding:12px;display:flex;gap:8px;align-items:center">🚪 Logout</a>
+</div>
+
+<div class="main">
+<div class="top">
+<div>
+<h2 id="sapaan">Halo, Mahasiswa! 👋</h2>
+<p style="color:#64748b;font-size:14px;margin-top:4px">Semangat belajar hari ini!</p>
+</div>
+<div class="profile">
+<div class="ava" id="ava">M</div>
+<div><div style="font-size:13px;font-weight:600" id="emailTampil">mahasiswa@ac.id</div><div style="font-size:11px;color:#64748b">Semester 5 • TI</div></div>
+</div>
+</div>
+
+<div class="cards">
+<div class="card-stat"><h4>IPK Saat Ini</h4><h1>3.82</h1><span>+0.12 semester ini</span></div>
+<div class="card-stat"><h4>Kelas Diikuti</h4><h1>6</h1><span style="color:#6366f1;background:#e0e7ff">Aktif semua</span></div>
+<div class="card-stat"><h4>Tugas Selesai</h4><h1>18/24</h1><span>75% selesai</span></div>
+<div class="card-stat"><h4>Kehadiran</h4><h1>96%</h1><span>Top 10%</span></div>
+</div>
+
+<div class="grid">
+<div class="box">
+<h3 style="margin-bottom:16px">📈 Progres Belajar</h3>
+<div style="margin-bottom:16px"><div style="display:flex;justify-content:space-between;font-size:13px"><b>Pemrograman Web</b><span>80%</span></div><div class="progress-bar"><div style="width:80%"></div></div></div>
+<div style="margin-bottom:16px"><div style="display:flex;justify-content:space-between;font-size:13px"><b>Basis Data Lanjut</b><span>65%</span></div><div class="progress-bar"><div style="width:65%;background:#06b6d4"></div></div></div>
+<div style="margin-bottom:16px"><div style="display:flex;justify-content:space-between;font-size:13px"><b>UI/UX Design</b><span>90%</span></div><div class="progress-bar"><div style="width:90%;background:#f59e0b"></div></div></div>
+<div><div style="display:flex;justify-content:space-between;font-size:13px"><b>Kecerdasan Buatan</b><span>45%</span></div><div class="progress-bar"><div style="width:45%;background:#ef4444"></div></div></div>
+</div>
+<div class="box">
+<h3 style="margin-bottom:16px">📝 Tugas Mendatang</h3>
+<div class="tugas"><div><b style="font-size:13px">Project UAS Web</b><div style="font-size:11px;color:#64748b">Due: 2 hari lagi</div></div><button class="btn-kecil">Kerjakan</button></div>
+<div class="tugas"><div><b style="font-size:13px">Laporan Basis Data</b><div style="font-size:11px;color:#64748b">Due: 5 hari lagi</div></div><button class="btn-kecil" style="background:#f1f5f9;color:#334155">Detail</button></div>
+<div class="tugas"><div><b style="font-size:13px">Desain Figma</b><div style="font-size:11px;color:#64748b">Due: Minggu depan</div></div><button class="btn-kecil" style="background:#f1f5f9;color:#334155">Detail</button></div>
+</div>
+</div>
+</div>
+
+<script>
+const email = localStorage.getItem('emailMahasiswa') || localStorage.getItem('email') || 'Mahasiswa';
+document.getElementById('emailTampil').textContent = email;
+document.getElementById('ava').textContent = email.charAt(0).toUpperCase();
+document.getElementById('sapaan').textContent = `Halo, ${email.split('@')[0]}! 👋`;
+
+function logout(){
+  if(confirm('Yakin mau logout?')){
+    localStorage.removeItem('emailMahasiswa');
+    localStorage.removeItem('email');
+    localStorage.clear();
+    window.location.href='mahasiswa.html';
+  }
+}
+</script>
+</body>
+</html>
