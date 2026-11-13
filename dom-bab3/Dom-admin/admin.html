@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduLearn - Admin Login</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+  <style>
+    #toast{visibility:hidden;min-width:280px;background:#1e293b;color:#fff;text-align:center;border-radius:10px;padding:14px 18px;position:fixed;z-index:9999;left:50%;bottom:30px;transform:translateX(-50%)}
+    #toast.show{visibility:visible}
+    #toast.error{background:#dc2626} #toast.success{background:#16a34a}
+    .toggle-pass{color:#2563eb;cursor:pointer;font-size:11px;font-weight:700}
+  </style>
+</head>
+<body>
+  <div class="top-bar" id="topBar">Login Admin</div>
+  <div class="main">
+    <div class="left"><div class="left-header"><div class="logo"><div class="logo-icon">🎓</div>EduLearn</div><div class="portal">● Portal Admin 2025</div></div><img class="left-img" src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80"><div class="left-content"><h2 id="welcomeText">Selamat Datang Admin</h2><p>Kelola data mahasiswa dan sistem akademik.</p></div></div>
+    <div class="right">
+      <div class="card">
+        <div class="card-icon">🔒</div><h3>Masuk sebagai Admin</h3>
+        <div class="form-group"><div class="label"><span>Email Admin</span></div><input class="input" id="email" type="text" placeholder="admin@kampus.ac.id"></div>
+        <div class="form-group"><div class="label"><span>Kata Sandi</span><span id="togglePass" class="toggle-pass">Lihat</span></div><input class="input" id="password" type="password" placeholder="********"></div>
+        <div class="row"><label class="remember"><input type="checkbox"> Ingat Saya</label><a href="#" class="forgot" id="forgotLink">Lupa Password?</a></div>
+        <button class="btn admin-btn" id="btnMasuk" type="button">Masuk ke Dashboard →</button>
+        <div class="bottom">Belum punya akun? <a href="#" id="daftarLink">Daftar di sini</a></div>
+      </div>
+    </div>
+  </div>
+  <div id="toast"></div>
+<script>
+const email=document.getElementById('email'),password=document.getElementById('password');
+document.getElementById('btnMasuk').addEventListener('click',function(){
+  if(email.value.trim()===''||password.value.trim()===''){showToast('Email & Password wajib diisi!','error');return}
+  if(!email.value.includes('@')){showToast('Email harus pakai @','error');return}
+  showToast('Login berhasil!','success');
+  localStorage.setItem('adminEmail',email.value);
+  window.location.href='dashboard.html'; // INI KUNCINYA
+});
+document.getElementById('togglePass').addEventListener('click',function(){password.type=password.type==='password'?'text':'password';this.textContent=password.type==='password'?'Lihat':'Sembunyi'});
+document.getElementById('forgotLink').addEventListener('click',function(e){e.preventDefault();let m=prompt('Masukkan email untuk reset:');if(m&&m.includes('@')){showToast('Link reset dikirim ke '+m,'success');document.getElementById('topBar').textContent='Link Reset ke '+m}else if(m!==null){showToast('Email tidak valid!','error')}});
+document.getElementById('daftarLink').addEventListener('click',function(e){e.preventDefault();let n=prompt('Nama Admin:');if(!n)return;let m=prompt('Email Admin:');if(!m||!m.includes('@')){showToast('Email tidak valid!','error');return}showToast('Akun '+n+' berhasil dibuat!','success');email.value=m});
+function showToast(msg,type){const t=document.getElementById('toast');t.textContent=msg;t.className='show '+type;setTimeout(()=>{t.className=''},3000)}
+</script>
+</body>
+</html>
